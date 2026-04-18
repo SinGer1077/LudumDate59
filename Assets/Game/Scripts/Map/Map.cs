@@ -71,8 +71,9 @@ public class Map : MonoBehaviour
         {
             Vector2 pos = HexToWorld(hex.Key, cellSize);
             Vector2 actualPos = pos + generationOffset;
-            Instantiate(cellPrefab, actualPos, Quaternion.identity);
+            GameObject cell = Instantiate(cellPrefab, actualPos, Quaternion.identity);
             hex.Value.actualWorldPosition = actualPos;
+            cell.GetComponent<CellController>().cell = hex.Value;
         }
     }
 

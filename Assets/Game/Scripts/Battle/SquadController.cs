@@ -50,28 +50,31 @@ public class SquadController : MonoBehaviour
         Destroy(gameObject); // todo
     }
 
-    public void Move(EDirection direction)
+    public bool Move(EDirection direction)
     {
         Cell finded = map.GetNeighbor(currentCell, direction);
         if (finded != null)
         {
             if (finded.squadInCell != null)
             {
-                if (finded.squadInCell.team == this.team) return; // we cant stand on filled cell with the same team;
+                if (finded.squadInCell.team == this.team) return false; // we cant stand on filled cell with the same team;
                 else
                 {
                     bool battle = levelController.StartBattle(this, finded.squadInCell); // todo need 
                     if (!battle)
                     {
                         FillCell(finded);
+                        return true;
                     }
                 }
             }
             else
             {
                 FillCell(finded);
+                return true;
             }
         }
+        return false;
     }
 
     public void PlaceOn(Vector2Int pos)

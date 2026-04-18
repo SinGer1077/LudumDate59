@@ -20,39 +20,6 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            squads[1].Move(EDirection.Right);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            squads[1].Move(EDirection.Left);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            squads[1].Move(EDirection.UpRight);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            squads[1].Move(EDirection.UpLeft);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            squads[1].Move(EDirection.DownRight);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            squads[1].Move(EDirection.DownLeft);
-        }
-    }
-
     public bool StartBattle(SquadController squad1, SquadController squad2)
     {
         Debug.Log("first" + BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
