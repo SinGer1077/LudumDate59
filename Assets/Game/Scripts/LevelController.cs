@@ -24,8 +24,8 @@ public class LevelController : MonoBehaviour
     {
         Debug.Log("first" + BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
         Debug.Log("second" + BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
-        squad1.TakeDamage(BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
-        squad2.TakeDamage(BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
+        squad1.TakeDamageInPercentage(BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
+        squad2.TakeDamageInPercentage(BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
 
         if (squad1.typeOfSquad == squad2.typeOfSquad)
         {

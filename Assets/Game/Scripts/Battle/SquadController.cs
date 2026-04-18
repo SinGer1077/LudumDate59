@@ -35,9 +35,9 @@ public class SquadController : MonoBehaviour
         currentHP = baseHP;
     }
 
-    public void TakeDamage(int  damage)
+    public void TakeDamageInPercentage(float damagePercent)
     {
-        currentHP -= damage;
+        currentHP -= currentHP * damagePercent;
         transform.localScale *= (currentHP / baseHP);
         if (currentHP <= 0)
         {

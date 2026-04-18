@@ -2,15 +2,15 @@ using UnityEngine;
 
 public static class BattleController
 {
-    public static int[,] battleTable = 
+    public static float[,] battleTable = 
     {
         // Lancer Shield Horse
         // Lancer
         // Shield
         // Horse
 
-        { 2, 4, 1 },
-        { 1, 2, 4 },
-        { 4, 1, 2 }
+        { 0.5f, 1.0f, 0.25f },
+        { 0.25f, 0.5f, 1.0f },
+        { 1.0f, 0.25f, 0.5f }
     };
 }
