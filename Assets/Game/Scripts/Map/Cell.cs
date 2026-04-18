@@ -15,6 +15,9 @@ public class Cell
     public int q;
     public int r;
 
+    public SquadController squadInCell;
+    public Vector2 actualWorldPosition;
+
     public Cell(int q, int r)
     {
         this.q = q;

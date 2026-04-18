@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyLancerSquad
       objectReference: {fileID: 0}
+    - target: {fileID: 8283065069997510428, guid: bd5c3b1b09d484e4e8f98dc76c6f0996, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -188,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHorseSquad
       objectReference: {fileID: 0}
+    - target: {fileID: 4334552771544557759, guid: 405ec1cba7930b249843859f0282d423, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     - target: {fileID: 9079606964831800005, guid: 405ec1cba7930b249843859f0282d423, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -454,6 +462,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &703672618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4334552771544557759, guid: 405ec1cba7930b249843859f0282d423, type: 3}
+  m_PrefabInstance: {fileID: 236667777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &812257146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812257148}
+  - component: {fileID: 812257147}
+  m_Layer: 0
+  m_Name: LevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &812257147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812257146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dd501dcc4b2044390864c31785b076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 842499040}
+  squads:
+  - {fileID: 1760102108}
+  - {fileID: 928732480}
+  - {fileID: 1010053959}
+  - {fileID: 703672618}
+  - {fileID: 1917864045}
+  - {fileID: 1484819304}
+  cellsToPlace:
+  - {x: 0, y: 0}
+  - {x: 0, y: 2}
+  - {x: 0, y: 4}
+  - {x: 8, y: 0}
+  - {x: 8, y: 2}
+  - {x: 8, y: 4}
+--- !u!4 &812257148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812257146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &842499039
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +580,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928732480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1694243238074483656, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
+  m_PrefabInstance: {fileID: 1729107913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1010053959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9052264856528269249, guid: f286159d61ef13d4886fc513fd4c8693, type: 3}
+  m_PrefabInstance: {fileID: 1015071343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1015071343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,6 +654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldSquad
       objectReference: {fileID: 0}
+    - target: {fileID: 9052264856528269249, guid: f286159d61ef13d4886fc513fd4c8693, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -607,6 +711,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4862631999004808661, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     - target: {fileID: 8142756191024687879, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
       propertyPath: m_Name
       value: EnemyShieldSquad
@@ -616,6 +724,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
+--- !u!114 &1484819304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4862631999004808661, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
+  m_PrefabInstance: {fileID: 1220698415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1617399805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,6 +783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4844558067667534563, guid: a96c683ab0e0ecd4abcf9615477a5def, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     - target: {fileID: 8160584587635932209, guid: a96c683ab0e0ecd4abcf9615477a5def, type: 3}
       propertyPath: m_Name
       value: HorseSquad
@@ -681,6 +804,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1694243238074483656, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 842499040}
     - target: {fileID: 2736010065567497498, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
       propertyPath: m_Name
       value: LancerSquad
@@ -730,6 +857,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
+--- !u!114 &1760102108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4844558067667534563, guid: a96c683ab0e0ecd4abcf9615477a5def, type: 3}
+  m_PrefabInstance: {fileID: 1617399805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1917864045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8283065069997510428, guid: bd5c3b1b09d484e4e8f98dc76c6f0996, type: 3}
+  m_PrefabInstance: {fileID: 215053362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73878738c168c0a4aa4b099baf30d436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -743,3 +892,4 @@ SceneRoots:
   - {fileID: 215053362}
   - {fileID: 1220698415}
   - {fileID: 842499041}
+  - {fileID: 812257148}

@@ -12,7 +12,7 @@ public class Map : MonoBehaviour
     public Vector2 generationOffset;
 
     [HideInInspector]
-    public List<Cell> grid;
+    public Dictionary<Vector2Int, Cell> grid = new Dictionary<Vector2Int, Cell>();
 
     public void Awake()
     {
@@ -21,55 +21,28 @@ public class Map : MonoBehaviour
     }
 
 
-    public List<Cell> GenerateGrid(int width, int height)
+    public void GenerateGrid(int width, int height)
     {
-        List<Cell> grid = new List<Cell>();
-
         for (int q = 0; q < width; q++)
         {
             for (int r = 0; r < height; r++)
             {
-                grid.Add(new Cell(q, r));
+                grid[new Vector2Int(q, r)] = new Cell(q, r);
             }
         }
-
-        this.grid = grid;
-
-        return grid;
     }
 
-
-    public List<Cell> GetNeighbors(Cell hex, HashSet<Cell> grid)
-    {
-        List<Cell> result = new List<Cell>();
-
-        foreach (var dir in Cell.directions)
-        {
-            Cell neighbor = new Cell(hex.q + dir.q, hex.r + dir.r);
-
-            if (grid.Contains(neighbor))
-                result.Add(neighbor);
-        }
-
-        return result;
-    }
-
-    public static Cell GetNeighbor(EDirection direction)
-    {
-        return Cell.directions[(int)direction];
-    }
-
-    public Vector2 HexToWorld(Cell hex, float size)
+    public Vector2 HexToWorld(Vector2Int hex, float size)
     {
         float width = Mathf.Sqrt(3) * size;
         float height = 2f * size;
 
-        float x = hex.q * width;
+        float x = hex.x * width;
 
-        if (hex.r % 2 == 1)
+        if (hex.y % 2 == 1)
             x += width / 2f;
 
-        float y = hex.r * (height * 0.75f);
+        float y = hex.y * (height * 0.75f);
 
         return new Vector2(x, y);
     }
@@ -78,8 +51,10 @@ public class Map : MonoBehaviour
     {
         foreach (var hex in grid)
         {
-            Vector2 pos = HexToWorld(hex, cellSize);
-            Instantiate(cellPrefab, pos + generationOffset, Quaternion.identity);
+            Vector2 pos = HexToWorld(hex.Key, cellSize);
+            Vector2 actualPos = pos + generationOffset;
+            Instantiate(cellPrefab, actualPos, Quaternion.identity);
+            hex.Value.actualWorldPosition = actualPos;
         }
     }
 }
