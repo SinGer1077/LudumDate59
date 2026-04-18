@@ -18,6 +18,7 @@ public enum ETeam
 public class SquadController : MonoBehaviour
 {
     public Map map;
+    public LevelController levelController;
 
     public int baseHP = 4;
 
@@ -29,16 +30,19 @@ public class SquadController : MonoBehaviour
 
     private Cell currentCell;
 
+    private void Start()
+    {
+        currentHP = baseHP;
+    }
+
     public void TakeDamage(int  damage)
     {
         currentHP -= damage;
-
+        transform.localScale *= (currentHP / baseHP);
         if (currentHP <= 0)
         {
             Death();
         }
-
-        transform.localScale *= currentHP / baseHP;
     }
 
     public void Death()
@@ -49,27 +53,30 @@ public class SquadController : MonoBehaviour
     public void Move(EDirection direction)
     {
         Cell finded = map.GetNeighbor(currentCell, direction);
-        if (finded != null && finded.squadInCell == null)
+        if (finded != null)
         {
-            currentCell.squadInCell = null;
-            currentCell = finded;
-            VisualMove(finded, true); // todo false
-            finded.squadInCell = this;
+            if (finded.squadInCell != null)
+            {
+                if (finded.squadInCell.team == this.team) return; // we cant stand on filled cell with the same team;
+                else
+                {
+                    bool battle = levelController.StartBattle(this, finded.squadInCell); // todo need 
+                    if (!battle)
+                    {
+                        FillCell(finded);
+                    }
+                }
+            }
+            else
+            {
+                FillCell(finded);
+            }
         }
     }
 
     public void PlaceOn(Vector2Int pos)
     {
-        if (currentCell != null)
-        {
-            currentCell.squadInCell = null;
-        }
-
-        map.grid[pos].squadInCell = this;
-        VisualMove(map.grid[pos], true);
-
-        currentCell = map.grid[pos];
-        map.grid[pos].squadInCell = this;
+        FillCell(map.grid[pos]);
     }
 
     public void VisualMove(Cell pos, bool teleport)
@@ -80,5 +87,16 @@ public class SquadController : MonoBehaviour
             squadPos.x -= 0.25f * ((int)this.team == 0 ? 1 : -1);
             transform.position = squadPos;
         }
+    }
+
+    public void FillCell(Cell to)
+    {
+        if (currentCell != null && currentCell.squadInCell == this)
+        {
+            currentCell.squadInCell = null;
+        }
+        currentCell = to;
+        VisualMove(to, true); // todo false
+        to.squadInCell = this;
     }
 }

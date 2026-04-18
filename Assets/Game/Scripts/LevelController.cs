@@ -53,8 +53,10 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void StartBattle(SquadController squad1, SquadController squad2)
+    public bool StartBattle(SquadController squad1, SquadController squad2)
     {
+        Debug.Log("first" + BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
+        Debug.Log("second" + BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
         squad1.TakeDamage(BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
         squad2.TakeDamage(BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
 
@@ -62,6 +64,9 @@ public class LevelController : MonoBehaviour
         {
             squad1.Move(EDirection.Left); // todo
             squad2.Move(EDirection.Right);
+            return true; // should change pos;
         }
+
+        return false; // shouldnt change pos
     }
 }

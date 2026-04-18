@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 8283065069997510428, guid: bd5c3b1b09d484e4e8f98dc76c6f0996, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -196,6 +200,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 4334552771544557759, guid: 405ec1cba7930b249843859f0282d423, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     - target: {fileID: 9079606964831800005, guid: 405ec1cba7930b249843859f0282d423, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -515,7 +523,7 @@ MonoBehaviour:
   - {x: 0, y: 2}
   - {x: 0, y: 4}
   - {x: 8, y: 0}
-  - {x: 8, y: 2}
+  - {x: 6, y: 2}
   - {x: 8, y: 4}
 --- !u!4 &812257148
 Transform:
@@ -658,6 +666,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 9052264856528269249, guid: f286159d61ef13d4886fc513fd4c8693, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -715,6 +727,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 4862631999004808661, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     - target: {fileID: 8142756191024687879, guid: cfa5809e34af24b47b7cfa4504258953, type: 3}
       propertyPath: m_Name
       value: EnemyShieldSquad
@@ -787,6 +803,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 4844558067667534563, guid: a96c683ab0e0ecd4abcf9615477a5def, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     - target: {fileID: 8160584587635932209, guid: a96c683ab0e0ecd4abcf9615477a5def, type: 3}
       propertyPath: m_Name
       value: HorseSquad
@@ -808,6 +828,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 842499040}
+    - target: {fileID: 1694243238074483656, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 812257147}
     - target: {fileID: 2736010065567497498, guid: 4c4548fa0fa4fc4459ac775a44e00b16, type: 3}
       propertyPath: m_Name
       value: LancerSquad

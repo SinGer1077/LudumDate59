@@ -78,8 +78,6 @@ public class Map : MonoBehaviour
 
     public Cell GetNeighbor(Cell currentCell, EDirection type)
     {
-        Debug.Log("start " + currentCell.q + " " + currentCell.r);
-        Debug.Log(evenDirs[(int)type]);
         Vector2Int direction = new Vector2Int(currentCell.q, currentCell.r);
         if (currentCell.r % 2 == 0)
             direction += evenDirs[(int)type];
@@ -88,12 +86,10 @@ public class Map : MonoBehaviour
 
         if (grid.ContainsKey(direction))
         {
-            Debug.Log("result" + grid[direction].q + " " + grid[direction].r);
             return grid[direction];
         }
         else
         {
-            Debug.Log("Nothing");
             return null;
         }
     }
