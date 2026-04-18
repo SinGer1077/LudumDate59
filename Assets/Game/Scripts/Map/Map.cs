@@ -14,6 +14,24 @@ public class Map : MonoBehaviour
     [HideInInspector]
     public Dictionary<Vector2Int, Cell> grid = new Dictionary<Vector2Int, Cell>();
 
+    Vector2Int[] evenDirs = {
+        new Vector2Int(+1, 0),   // Right
+        new Vector2Int(0, +1),   // UpRight
+        new Vector2Int(-1, +1),  // UpLeft
+        new Vector2Int(-1, 0),   // Left
+        new Vector2Int(-1, -1),  // DownLeft
+        new Vector2Int(0, -1)    // DownRight
+    };
+
+    Vector2Int[] oddDirs = {
+        new Vector2Int(+1, 0),   // Right
+        new Vector2Int(+1, +1),  // UpRight
+        new Vector2Int(0, +1),   // UpLeft
+        new Vector2Int(-1, 0),   // Left
+        new Vector2Int(0, -1),   // DownLeft
+        new Vector2Int(+1, -1)   // DownRight
+    };
+
     public void Awake()
     {
         GenerateGrid((int)gridSize.x, (int)gridSize.y);
@@ -55,6 +73,28 @@ public class Map : MonoBehaviour
             Vector2 actualPos = pos + generationOffset;
             Instantiate(cellPrefab, actualPos, Quaternion.identity);
             hex.Value.actualWorldPosition = actualPos;
+        }
+    }
+
+    public Cell GetNeighbor(Cell currentCell, EDirection type)
+    {
+        Debug.Log("start " + currentCell.q + " " + currentCell.r);
+        Debug.Log(evenDirs[(int)type]);
+        Vector2Int direction = new Vector2Int(currentCell.q, currentCell.r);
+        if (currentCell.r % 2 == 0)
+            direction += evenDirs[(int)type];
+        else
+            direction += oddDirs[(int)type];
+
+        if (grid.ContainsKey(direction))
+        {
+            Debug.Log("result" + grid[direction].q + " " + grid[direction].r);
+            return grid[direction];
+        }
+        else
+        {
+            Debug.Log("Nothing");
+            return null;
         }
     }
 }
