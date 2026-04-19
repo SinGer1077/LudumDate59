@@ -8,18 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 844704610288872954, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3272805312411629707, guid: 0651c5f789b74ef43afe40d72c1a9231, type: 3}
+    - target: {fileID: 1662602751360502711, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3272805312411629707, guid: 0651c5f789b74ef43afe40d72c1a9231, type: 3}
+    - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3272805312411629707, guid: 0651c5f789b74ef43afe40d72c1a9231, type: 3}
+    - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.b
-      value: 0.93710685
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.g
-      value: 0.4685533
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.r
-      value: 0.8623636
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502392931850846451, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3272805312411629707, guid: 0651c5f789b74ef43afe40d72c1a9231, type: 3}
     - target: {fileID: 2573672573315692011, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Name
       value: LancerSquad

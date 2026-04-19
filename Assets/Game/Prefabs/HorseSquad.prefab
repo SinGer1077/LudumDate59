@@ -8,22 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 844704610288872954, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7672759098259192623, guid: 662c71fafa86e5a499b3a7a9b9629b5b, type: 3}
     - target: {fileID: 1282661707460053817, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: typeOfSquad
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1662602751360502711, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7672759098259192623, guid: 662c71fafa86e5a499b3a7a9b9629b5b, type: 3}
+    - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7672759098259192623, guid: 662c71fafa86e5a499b3a7a9b9629b5b, type: 3}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.b
-      value: 0.76891845
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.g
-      value: 0.91194963
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.r
-      value: 0.5362722
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502392931850846451, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7672759098259192623, guid: 662c71fafa86e5a499b3a7a9b9629b5b, type: 3}
     - target: {fileID: 2573672573315692011, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Name
       value: HorseSquad

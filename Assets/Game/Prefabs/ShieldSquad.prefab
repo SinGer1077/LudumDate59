@@ -8,22 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 844704610288872954, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6717884257390833292, guid: f8e1c8a1ccadf804e928f85d68e963b6, type: 3}
     - target: {fileID: 1282661707460053817, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: typeOfSquad
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1662602751360502711, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6717884257390833292, guid: f8e1c8a1ccadf804e928f85d68e963b6, type: 3}
+    - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6717884257390833292, guid: f8e1c8a1ccadf804e928f85d68e963b6, type: 3}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.b
-      value: 0.9056604
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.g
-      value: 0.43460822
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872991078156792510, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Color.r
-      value: 0.36739045
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502392931850846451, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6717884257390833292, guid: f8e1c8a1ccadf804e928f85d68e963b6, type: 3}
     - target: {fileID: 2573672573315692011, guid: 8d09ef1d28f17a44c87b8ecba0e6d36b, type: 3}
       propertyPath: m_Name
       value: ShieldSquad
