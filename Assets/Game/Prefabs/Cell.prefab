@@ -101,6 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb91302b653091499383058e15bd313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 2324838383805154698}
+  cellSprites:
+  - {fileID: 3589887364770325500, guid: 706ca9d6e6de74e43bb21a6c87afeed7, type: 3}
+  - {fileID: -911666850483448807, guid: 3a39f6b6112d54341a5f53de00cea4c3, type: 3}
+  - {fileID: 3559892545875481391, guid: 264ce6c2a2d9d3b48aab3e8bf8728ed5, type: 3}
+  - {fileID: -1563193789699379695, guid: 486c80fb66f56504fac9b2c97a692947, type: 3}
+  currentType: 0
 --- !u!60 &7256564864589871208
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +146,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.8828125, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

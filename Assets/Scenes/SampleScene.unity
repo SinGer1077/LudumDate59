@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1333898304}
+  map: {fileID: 842499040}
   pointsPerTurn: 4
   timeForEndRound: 1.5
   imageToFill: {fileID: 971292336}
@@ -907,6 +908,7 @@ MonoBehaviour:
   horseSquad: {fileID: 1760102108}
   shieldSquad: {fileID: 1010053959}
   gameState: {fileID: 581033518}
+  map: {fileID: 842499040}
 --- !u!4 &724283508
 Transform:
   m_ObjectHideFlags: 0

@@ -28,7 +28,8 @@ public class SquadController : MonoBehaviour
     public SquadType typeOfSquad;
     public ETeam team;
 
-    private Cell currentCell;
+    [HideInInspector]
+    public Cell currentCell;
 
     private void Start()
     {
@@ -53,6 +54,33 @@ public class SquadController : MonoBehaviour
     public bool Move(EDirection direction)
     {
         Cell finded = map.GetNeighbor(currentCell, direction);
+        if (finded != null)
+        {
+            if (finded.squadInCell != null)
+            {
+                if (finded.squadInCell.team == this.team) return false; // we cant stand on filled cell with the same team;
+                else
+                {
+                    bool battle = levelController.StartBattle(this, finded.squadInCell); // todo need 
+                    if (!battle)
+                    {
+                        FillCell(finded);
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                FillCell(finded);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool Move(Vector2Int direction)
+    {
+        Cell finded = map.grid[new Vector2Int(currentCell.q + direction.x, currentCell.r + direction.y)];
         if (finded != null)
         {
             if (finded.squadInCell != null)

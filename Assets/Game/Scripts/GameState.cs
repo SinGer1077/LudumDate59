@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameState : MonoBehaviour
 {
     public EnemyAIController enemy;
+    public Map map;
 
     public int pointsPerTurn;
 
@@ -89,6 +90,8 @@ public class GameState : MonoBehaviour
         currentEnemyTurnPoints = pointsPerTurn;
         roundIdx++;
         enemy.DoRandomMove();
+
+        map.ResetCells(new ECellSprite[0]);
 
     }
 

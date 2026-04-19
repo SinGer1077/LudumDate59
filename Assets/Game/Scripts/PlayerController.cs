@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,8 +9,10 @@ public class PlayerController : MonoBehaviour
     public SquadController shieldSquad;
 
     public GameState gameState;
+    public Map map;
 
     private SquadController currentSquadToCommand;
+    private Cell currentChoosenCell;
 
     private KeyValuePair<EDirection, KeyCode>[] keyCodesDirection = 
     {
@@ -25,17 +28,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ChooseSquad(lancerSquad);
+            ChooseSquad(lancerSquad, lancerSquad.currentCell.cellController);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ChooseSquad(horseSquad);
+            ChooseSquad(horseSquad, horseSquad.currentCell.cellController);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ChooseSquad(shieldSquad);
+            ChooseSquad(shieldSquad, shieldSquad.currentCell.cellController);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -50,7 +53,49 @@ public class PlayerController : MonoBehaviour
                 {
                     if (cellController.cell.squadInCell != null && cellController.cell.squadInCell.team == ETeam.Main)
                     {
-                        ChooseSquad(cellController.cell.squadInCell);
+                        ChooseSquad(cellController.cell.squadInCell, cellController);
+                    }
+
+                    if (currentSquadToCommand != null)
+                    {
+                        var neighbors = map.GetNeighbors(cellController.cell);
+                        Cell neig = null;
+
+                        for (int i = 0; i < neighbors.Length; i++)
+                        {
+                            if (neighbors[i].q == currentSquadToCommand.currentCell.q && neighbors[i].r == currentSquadToCommand.currentCell.r)
+                            {
+                                neig = cellController.cell;
+                            }
+                        }
+
+
+                        if (neig != null)
+                        {
+                            if (currentChoosenCell == neig)
+                            {
+                                Debug.Log(new Vector2Int(cellController.cell.q - currentSquadToCommand.currentCell.q, cellController.cell.r - currentSquadToCommand.currentCell.r));
+                                bool isMoved = currentSquadToCommand.Move(new Vector2Int(cellController.cell.q - currentSquadToCommand.currentCell.q, cellController.cell.r - currentSquadToCommand.currentCell.r));
+                                if (isMoved)
+                                {
+                                    gameState.DicreasePlayerPoints(1);
+                                }
+                                currentChoosenCell = null;
+                                ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+                            }
+                            else if (currentChoosenCell != null)
+                            {
+                                currentChoosenCell.cellController.ResetChoose();
+                                currentChoosenCell = neig;
+                                neig.cellController.SetChoose();
+                            }
+                            else
+                            {
+                                currentChoosenCell = neig;
+                                neig.cellController.SetChoose();
+                            }
+
+                        }
                     }
                 }
             }
@@ -64,11 +109,33 @@ public class PlayerController : MonoBehaviour
                 {
                     if (gameState.currentPlayerTurnPoints > 0)
                     {
-                        bool isMoved = currentSquadToCommand.Move(keyCodesDirection[i].Key);
-                        if (isMoved)
+                        var neig = map.GetNeighbor(currentSquadToCommand.currentCell, keyCodesDirection[i].Key);
+                        if (neig != null)
                         {
-                            gameState.DicreasePlayerPoints(1);
+                            if (currentChoosenCell == neig)
+                            {
+                                bool isMoved = currentSquadToCommand.Move(keyCodesDirection[i].Key);
+                                if (isMoved)
+                                {
+                                    gameState.DicreasePlayerPoints(1);
+                                }
+                                currentChoosenCell = null;
+                                ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+                            }
+                            else if (currentChoosenCell != null)
+                            {
+                                currentChoosenCell.cellController.ResetChoose();
+                                currentChoosenCell = neig;
+                                neig.cellController.SetChoose();
+                            }
+                            else
+                            {
+                                currentChoosenCell = neig;
+                                neig.cellController.SetChoose();
+                            }
+
                         }
+ 
                     }
                     
                 }
@@ -77,11 +144,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChooseSquad(SquadController squad)
+    private void ChooseSquad(SquadController squad, CellController cell)
     {
         currentSquadToCommand = squad;
         Debug.Log("Choosen squad " + squad.typeOfSquad);
-    }
 
-    
+        map.ResetCells(new ECellSprite[0]);
+
+        if (cell != null)
+        {
+            cell.SetSprite(ECellSprite.Chosen);
+            Cell[] neighbors = map.GetNeighbors(cell.cell);
+            foreach (Cell neighbor in neighbors)
+            {
+                neighbor.cellController.SetSprite(ECellSprite.Path);
+            }
+        }
+    }
 }

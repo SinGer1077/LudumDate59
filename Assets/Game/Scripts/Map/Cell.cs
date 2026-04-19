@@ -17,6 +17,7 @@ public class Cell
 
     public SquadController squadInCell;
     public Vector2 actualWorldPosition;
+    public CellController cellController;
 
     public Cell(int q, int r)
     {

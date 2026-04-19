@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -73,7 +74,9 @@ public class Map : MonoBehaviour
             Vector2 actualPos = pos + generationOffset;
             GameObject cell = Instantiate(cellPrefab, actualPos, Quaternion.identity);
             hex.Value.actualWorldPosition = actualPos;
-            cell.GetComponent<CellController>().cell = hex.Value;
+            var controller = cell.GetComponent<CellController>();
+            controller.cell = hex.Value;
+            controller.cell.cellController = controller;
         }
     }
 
@@ -92,6 +95,56 @@ public class Map : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public Cell[] GetNeighbors(Cell currentCell)
+    {
+        List<Cell> result = new List<Cell>();
+        if (currentCell.r % 2 == 0)
+        {
+            foreach (var neig in evenDirs)
+            {
+                Vector2Int direction = new Vector2Int(currentCell.q, currentCell.r) + neig;
+                if (grid.ContainsKey(direction))
+                {
+                    result.Add(grid[direction]);
+                }
+            }
+        }
+        else
+        {
+            foreach (var neig in oddDirs)
+            {
+                Vector2Int direction = new Vector2Int(currentCell.q, currentCell.r) + neig;
+                if (grid.ContainsKey(direction))
+                {
+                    result.Add(grid[direction]);
+                }
+            }
+        }
+
+        return result.ToArray();
+    }
+
+    public void ResetCells(ECellSprite[] typesToReset)
+    {
+        foreach (var cell in grid)
+        {
+            if (typesToReset.Length == 0)
+            {
+                cell.Value.cellController.SetSprite(ECellSprite.Default);
+                cell.Value.cellController.ResetChoose();
+            }
+            else
+            {
+                if (typesToReset.Contains(cell.Value.cellController.currentType))
+                {
+                    cell.Value.cellController.SetSprite(ECellSprite.Default);
+                    cell.Value.cellController.ResetChoose();
+                }
+            }
+            
         }
     }
 }
