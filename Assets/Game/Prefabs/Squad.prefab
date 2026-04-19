@@ -138,6 +138,11 @@ MonoBehaviour:
   currentHP: 0
   typeOfSquad: 0
   team: 0
+  warriors:
+  - {fileID: 6405588048051746313}
+  - {fileID: 359541062045160137}
+  - {fileID: 3251954989952368574}
+  - {fileID: 3534822954741500409}
 --- !u!1 &3251954989952368574
 GameObject:
   m_ObjectHideFlags: 0

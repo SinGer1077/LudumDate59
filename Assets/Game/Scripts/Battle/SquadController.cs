@@ -1,5 +1,5 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+using System.Collections.Generic;
 
 
 public enum SquadType
@@ -19,17 +19,20 @@ public class SquadController : MonoBehaviour
 {
     public Map map;
     public LevelController levelController;
+    public PlayerController playerController;
 
     public int baseHP = 4;
 
     [HideInInspector]
-    public float currentHP;
+    public int currentHP;
 
     public SquadType typeOfSquad;
     public ETeam team;
 
     [HideInInspector]
     public Cell currentCell;
+
+    public List<GameObject> warriors;
 
     private void Start()
     {
@@ -38,11 +41,27 @@ public class SquadController : MonoBehaviour
 
     public void TakeDamageInPercentage(float damagePercent)
     {
-        currentHP -= currentHP * damagePercent;
-        transform.localScale *= (currentHP / baseHP);
+        int baseHP = currentHP;
+        currentHP -= Mathf.RoundToInt(currentHP * damagePercent);
+
+        if (currentHP == 1 && damagePercent == 0.5f) { currentHP = 0; }
+
+        for (int i = 0; i < baseHP - currentHP; i++)
+        {
+            int lastIndex = warriors.Count - 1;
+
+            warriors[lastIndex].SetActive(false);
+            warriors.RemoveAt(lastIndex);
+        }
+
         if (currentHP <= 0)
         {
             Death();
+
+            if (playerController != null)
+            {
+                playerController.Reset();
+            }
         }
     }
 

@@ -1,8 +1,12 @@
+
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
     public Map map;
+    public GameState state;
+    public PlayerController playerController;
+    public EnemyAIController enemyController;
 
     public SquadController[] squads; // from 0 to 5 - my and enemies squads;
     public Vector2Int[] cellsToPlace;
@@ -26,6 +30,15 @@ public class LevelController : MonoBehaviour
         Debug.Log("second" + BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
         squad1.TakeDamageInPercentage(BattleController.battleTable[(int)squad1.typeOfSquad, (int)squad2.typeOfSquad]);
         squad2.TakeDamageInPercentage(BattleController.battleTable[(int)squad2.typeOfSquad, (int)squad1.typeOfSquad]);
+
+        if (playerController.IsDead())
+        {
+            state.Lose();
+        }
+        if (!enemyController.HaveArmy())
+        {
+            state.Win();
+        }
 
         if (squad1.typeOfSquad == squad2.typeOfSquad)
         {

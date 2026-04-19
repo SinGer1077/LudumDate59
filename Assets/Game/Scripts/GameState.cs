@@ -4,11 +4,13 @@ using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
     public EnemyAIController enemy;
     public Map map;
+    public PlayerController playerController;
 
     public int pointsPerTurn;
 
@@ -18,6 +20,9 @@ public class GameState : MonoBehaviour
     public Image imageToFill;
     public Image imageToRotate;
     public TextMeshProUGUI pointsText;
+
+    public GameObject winPanel;
+    public GameObject losePanel;
 
     [HideInInspector]
     public int roundIdx = 0;
@@ -92,7 +97,7 @@ public class GameState : MonoBehaviour
         enemy.DoRandomMove();
 
         map.ResetCells(new ECellSprite[0]);
-
+        playerController.Reset();
     }
 
     IEnumerator RotateImage(RectTransform target, float duration, float angle)
@@ -115,6 +120,27 @@ public class GameState : MonoBehaviour
         }
 
         target.rotation = Quaternion.Euler(0f, 0f, endZ);
+    }
+
+    public void RetryLevel()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Win()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        losePanel.SetActive(true);
     }
 
 }

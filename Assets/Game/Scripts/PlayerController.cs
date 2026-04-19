@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private SquadController currentSquadToCommand;
     private Cell currentChoosenCell;
 
+    public AudioSource source;
+
     private KeyValuePair<EDirection, KeyCode>[] keyCodesDirection = 
     {
         new KeyValuePair<EDirection, KeyCode>(EDirection.Left, KeyCode.A),
@@ -74,14 +76,17 @@ public class PlayerController : MonoBehaviour
                         {
                             if (currentChoosenCell == neig)
                             {
-                                Debug.Log(new Vector2Int(cellController.cell.q - currentSquadToCommand.currentCell.q, cellController.cell.r - currentSquadToCommand.currentCell.r));
                                 bool isMoved = currentSquadToCommand.Move(new Vector2Int(cellController.cell.q - currentSquadToCommand.currentCell.q, cellController.cell.r - currentSquadToCommand.currentCell.r));
                                 if (isMoved)
                                 {
                                     gameState.DicreasePlayerPoints(1);
+                                    //source.Play();
                                 }
                                 currentChoosenCell = null;
-                                ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+                                if (currentSquadToCommand != null)
+                                {
+                                    ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+                                }
                             }
                             else if (currentChoosenCell != null)
                             {
@@ -118,9 +123,14 @@ public class PlayerController : MonoBehaviour
                                 if (isMoved)
                                 {
                                     gameState.DicreasePlayerPoints(1);
+                                    //source.Play();
                                 }
                                 currentChoosenCell = null;
-                                ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+
+                                if (currentSquadToCommand != null)
+                                {
+                                    ChooseSquad(currentSquadToCommand, currentSquadToCommand.currentCell.cellController);
+                                }
                             }
                             else if (currentChoosenCell != null)
                             {
@@ -146,8 +156,9 @@ public class PlayerController : MonoBehaviour
 
     private void ChooseSquad(SquadController squad, CellController cell)
     {
+        if (squad.currentHP <= 0) { return; }
+
         currentSquadToCommand = squad;
-        Debug.Log("Choosen squad " + squad.typeOfSquad);
 
         map.ResetCells(new ECellSprite[0]);
 
@@ -157,8 +168,31 @@ public class PlayerController : MonoBehaviour
             Cell[] neighbors = map.GetNeighbors(cell.cell);
             foreach (Cell neighbor in neighbors)
             {
-                neighbor.cellController.SetSprite(ECellSprite.Path);
+                if (neighbor.squadInCell != null && neighbor.squadInCell.team != ETeam.Main)
+                {
+                    neighbor.cellController.SetSprite(ECellSprite.Fight);
+                }
+                else if (neighbor.squadInCell == null)
+                {
+                    neighbor.cellController.SetSprite(ECellSprite.Path);
+                }
             }
         }
+    }
+
+    public void Reset()
+    {
+        currentSquadToCommand = null;
+        currentChoosenCell = null;
+    }
+
+    public bool IsDead()
+    {
+        if (lancerSquad.currentHP <= 0 && shieldSquad.currentHP <= 0 && horseSquad.currentHP <= 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
